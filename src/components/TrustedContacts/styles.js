@@ -1,0 +1,93 @@
+import { StyleSheet } from 'react-native';
+
+export const styles = StyleSheet.create({
+  whiteCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
+    padding: 20,
+    marginBottom: 16,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  cardTitle: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: '#8A8A8A',
+    marginBottom: 10,
+    letterSpacing: 0.5,
+  },
+  cardDescription: {
+    fontSize: 15,
+    color: '#6B7280',
+    lineHeight: 22,
+  },
+  emptyStateText: {
+    fontSize: 16,
+    color: '#8A8A8A',
+    marginTop: 15,
+    marginBottom: 20,
+  },
+  contactsList: {
+    marginTop: 15,
+    marginBottom: 20,
+  },
+  contactRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#F0F0F0',
+  },
+  contactAvatar: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#FFE600',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 12,
+  },
+  contactAvatarText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#1A1A1A',
+  },
+  contactInfo: {
+    flex: 1,
+    marginRight: 8,
+  },
+  contactName: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#1A1A1A',
+  },
+  contactPhone: {
+    fontSize: 13,
+    color: '#6B7280',
+    marginTop: 2,
+  },
+  addContactButton: {
+    backgroundColor: '#FFFFFF',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 14,
+    borderRadius: 30,
+    borderWidth: 1,
+    borderColor: '#F0F0F0',
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    gap: 8,
+  },
+  addContactText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#1A1A1A',
+  },
+});
