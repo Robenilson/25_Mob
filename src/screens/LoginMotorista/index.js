@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// src/screens/LoginScreen/index.js
 import {
   ScrollView,
   Text,
@@ -11,42 +11,52 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
 
+import { useLoginScreen } from './useLoginScreen';
 import { styles } from './styles';
 
-export default function LoginMotorista({ navigation }) {   // 👈 nome alterado
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
-  const [accepted, setAccepted] = useState(false);
+export default function LoginScreen({ navigation }) {
+  const {
+    phone,
+    email,
+    accepted,
+    isLoading,
+    setPhone,
+    setEmail,
+    toggleAccepted,
+    goToRegister,
+    handleContinue,
+  } = useLoginScreen({ navigation });
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar style="light" />
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <ScrollView
+        contentContainerStyle={styles.scrollContent}
+        keyboardShouldPersistTaps="handled"
+      >
         <View style={styles.container}>
 
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => navigation.goBack()}
-            activeOpacity={0.7}
-          >
-            <Ionicons name="chevron-back-outline" size={30} color="#000" />
-          </TouchableOpacity>
+          {navigation.canGoBack() && (
+            <TouchableOpacity
+              style={styles.backButton}
+              onPress={() => navigation.goBack()}
+              activeOpacity={0.7}
+            >
+              <Ionicons name="chevron-back-outline" size={30} color="#000" />
+            </TouchableOpacity>
+          )}
 
-            <View style={styles.logoContainer}>
+          <View style={styles.logoContainer}>
+            <Image
+              source={require('../../../assets/images/logo.jpg')}
+              style={styles.logoImage}
+              resizeMode="cover"
+            />
+          </View>
 
-                <Image
-                source={require('../../../assets/images/logo.jpg')} // 👈 Coloque o caminho correto da sua imagem aqui
-                 style={styles.logoImage}
-                  resizeMode="cover" // Garante que a imagem não distorça
-              />
-            </View>
-
-
-
-          <Text style={styles.title}>Entrar com seu telefone</Text>
-
+          <Text style={styles.title}>Entrar na sua conta</Text>
           <Text style={styles.subtitle}>
-            Conta de motorista · enviamos um código para o seu e-mail
+            Enviamos um código de acesso para o seu e-mail
           </Text>
 
           <TextInput
@@ -59,7 +69,7 @@ export default function LoginMotorista({ navigation }) {   // 👈 nome alterado
           />
 
           <Text style={styles.helper}>
-            Use o telefone com DDD. É por ele que o passageiro e o suporte falam com você.
+            Use o telefone com DDD. É por ele que passageiro e suporte falam com você.
           </Text>
 
           <TextInput
@@ -70,6 +80,7 @@ export default function LoginMotorista({ navigation }) {   // 👈 nome alterado
             onChangeText={setEmail}
             keyboardType="email-address"
             autoCapitalize="none"
+            autoCorrect={false}
           />
 
           <Text style={styles.helperSmall}>
@@ -78,7 +89,7 @@ export default function LoginMotorista({ navigation }) {   // 👈 nome alterado
 
           <TouchableOpacity
             style={styles.termsRow}
-            onPress={() => setAccepted(!accepted)}
+            onPress={toggleAccepted}
             activeOpacity={0.7}
           >
             <View style={[styles.checkbox, accepted && styles.checkboxChecked]}>
@@ -90,15 +101,33 @@ export default function LoginMotorista({ navigation }) {   // 👈 nome alterado
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={[styles.button, !accepted && styles.buttonDisabled]}
-            disabled={!accepted}
-            onPress={() => {
-              console.log('Continuar pressionado', { phone, email });
-            }}
+            style={[styles.button, (!accepted || isLoading) && styles.buttonDisabled]}
+            disabled={!accepted || isLoading}
+            onPress={handleContinue}
             activeOpacity={0.8}
           >
-            <Text style={styles.buttonText}>Continuar</Text>
+            <Text style={styles.buttonText}>
+              {isLoading ? 'Entrando...' : 'Continuar'}
+            </Text>
           </TouchableOpacity>
+
+          <View style={styles.dividerRow}>
+            <View style={styles.dividerLine} />
+            <Text style={styles.dividerText}>ou</Text>
+            <View style={styles.dividerLine} />
+          </View>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={goToRegister}
+            activeOpacity={0.8}
+          >
+            <Text style={styles.buttonText}>Criar cadastro</Text>
+          </TouchableOpacity>
+
+          <Text style={styles.registerHint}>
+            É novo por aqui? Crie sua conta em menos de 1 minuto.
+          </Text>
 
         </View>
       </ScrollView>

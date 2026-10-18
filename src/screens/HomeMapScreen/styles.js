@@ -1,3 +1,4 @@
+// src/screens/HomeMapScreen/styles.js
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -6,18 +7,19 @@ export const styles = StyleSheet.create({
     backgroundColor: '#E5E5EA',
   },
 
-  // ----- ÁREA DO MAPA -----
-  mapPlaceholder: {
+  // ----- ÁREA DE CARREGAMENTO DO MAPA -----
+  mapLoading: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: '#F0F0F0',
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F2F2F2',
+    gap: 12,
   },
-  mapPlaceholderText: {
-    color: '#C0C0C0',        // 👈 mais claro para não competir com o topo
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginTop: 80,            // 👈 empurra para baixo, sai de trás do topCard
+  mapLoadingText: {
+    fontSize: 14,
+    color: '#666',
+    textAlign: 'center',
+    paddingHorizontal: 24,
   },
 
   // ----- CABEÇALHO (TOPO) -----
@@ -70,14 +72,16 @@ export const styles = StyleSheet.create({
     marginTop: 2,
   },
 
-  // ----- CARTÃO INFERIOR (BOTTOM SHEET) -----
-  bottomCardContainer: {
+  // ----- CONTAINER INFERIOR (Cartão + NavBar) -----
+  bottomContainer: {
     position: 'absolute',
-    bottom: 150,              // 👈 150 era exagero; 130 é o ponto certo
+    bottom: 30,
     left: 20,
     right: 20,
     zIndex: 10,
   },
+
+  // ----- CARTÃO INFERIOR (BOTTOM SHEET) -----
   bottomCard: {
     backgroundColor: '#FFFFFF',
     borderRadius: 24,
@@ -87,6 +91,7 @@ export const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 8,
+    marginBottom: 16, // Espaço entre o cartão e a barra de navegação
   },
 
   // ----- CAMPO DE BUSCA -----
@@ -116,18 +121,13 @@ export const styles = StyleSheet.create({
 
   // ----- BARRA DE NAVEGAÇÃO INFERIOR -----
   bottomNavBar: {
-    position: 'absolute',
-    bottom: 30,
-    left: 20,
-    right: 20,
     backgroundColor: '#FFFFFF',
     borderRadius: 40,
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-     paddingVertical: 10,
+    paddingVertical: 10,
     paddingHorizontal: 10,
-    zIndex: 20,
     elevation: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 5 },
@@ -139,21 +139,19 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 10,
   },
- activeIconCircle: {
-  backgroundColor: '#FFE600',
-  width: 50,
-  height: 50,
-  borderRadius: 25,
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginBottom: 4,   // 👈 MESMO espaçamento dos outros ícones
-  // ⛔ removido: marginTop: -25 (era o que elevava)
-  overflow: 'hidden',
-},
+  activeIconCircle: {
+    backgroundColor: '#FFE600',
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 4,
+    overflow: 'hidden',
+  },
   navIconImage: {
-    width: 32,                // 👈 TAMANHO FIXO, não 100%
+    width: 32,
     height: 32,
-    // ⛔ REMOVIDO o transform: scale(1.8) — estava deformando a imagem
   },
   navTextActive: {
     fontSize: 12,

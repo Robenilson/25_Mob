@@ -3,27 +3,43 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
-    "@expo/metro-runtime": "~57.0.16",
-    "@expo/vector-icons": "^15.0.2",
-    "@react-navigation/bottom-tabs": "^7.20.0",
-    "@react-navigation/native": "^7.5.0",
-    "@react-navigation/native-stack": "^7.20.0",
-    "expo": "~57.0.27",
-    "expo-contacts": "~57.0.8",
-    "expo-location": "~57.0.21",
-    "expo-status-bar": "~57.0.1",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "react-native": "0.86.3",
-    "react-native-safe-area-context": "~5.7.0",
-    "react-native-screens": "~4.26.0",
-    "react-native-web": "^0.21.2"
+    "@expo/metro-runtime": "~6.1.0",
+    "@expo/ngrok": "^4.1.0",
+    "@expo/vector-icons": "^15.0.0",
+    "@react-navigation/bottom-tabs": "^7.4.0",
+    "@react-navigation/native": "^7.1.17",
+    "@react-navigation/native-stack": "^7.3.0",
+    "babel-preset-expo": "~54.0.10",
+    "expo": "~54.0.33",
+    "expo-contacts": "~15.0.11",
+    "expo-font": "~14.0.10",
+    "expo-location": "~19.0.8",
+    "expo-sqlite": "~16.0.8",
+    "expo-status-bar": "~3.0.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-maps": "1.28.2",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-screens": "~4.16.0",
+    "react-native-web": "~0.21.0"
   },
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web"
   },
-  "private": true
+  "private": true,
+  "expo": {
+    "install": {
+      "exclude": [
+        "react-native-maps"
+      ]
+    }
+  },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^5.0.3",
+    "typescript": "~5.9.2"
+  }
 }

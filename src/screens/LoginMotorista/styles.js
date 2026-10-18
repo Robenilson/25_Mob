@@ -1,3 +1,4 @@
+// src/screens/LoginScreen/styles.js
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -29,21 +30,22 @@ export const styles = StyleSheet.create({
     marginTop: 25,
   },
 
-  // ===== Logo placeholder =====
+  // ===== Logo =====
   logoContainer: {
-  width: 130,
-  height: 130,
-  borderRadius: 28, // Bordas arredondadas
-  overflow: 'hidden', // Garante que a imagem não saia do quadrado arredondado
-  marginBottom: 24,
-  backgroundColor: '#1A1A1A', // Cor de fundo escura (caso a imagem tenha transparência)
-  justifyContent: 'center',
-  alignItems: 'center',
-},
-logoImage: {
-  width: '100%',
-  height: '100%',
-},
+    width: 130,
+    height: 130,
+    borderRadius: 28,
+    overflow: 'hidden',
+    marginBottom: 24,
+    backgroundColor: '#1A1A1A',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logoImage: {
+    width: '100%',
+    height: '100%',
+  },
+
   // ===== Textos principais =====
   title: {
     fontSize: 28,
@@ -119,7 +121,7 @@ logoImage: {
     lineHeight: 20,
   },
 
-  // ===== Botão Continuar =====
+  // ===== Botão principal (padrão único) =====
   button: {
     width: 300,
     height: 44,
@@ -128,7 +130,6 @@ logoImage: {
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 10,
-    marginBottom: 30,
   },
   buttonDisabled: {
     opacity: 0.5,
@@ -137,5 +138,33 @@ logoImage: {
     color: '#000000',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+
+  // ===== Divisor "ou" =====
+  dividerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 20,
+    gap: 10,
+    width: 300,
+  },
+  dividerLine: {
+    flex: 1,
+    height: 1,
+    backgroundColor: 'rgba(255, 255, 255, 0.35)', // visível no fundo roxo
+  },
+  dividerText: {
+    fontSize: 13,
+    color: '#E8E8E8',
+    fontWeight: '600',
+  },
+
+  // ===== Texto de dica abaixo do "Criar cadastro" =====
+  registerHint: {
+    fontSize: 13,
+    color: '#E8E8E8',
+    textAlign: 'center',
+    marginTop: 14,
+    opacity: 0.85,
   },
 });
